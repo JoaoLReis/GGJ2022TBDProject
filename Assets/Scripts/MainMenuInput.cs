@@ -11,7 +11,7 @@ public class MainMenuInput : MonoBehaviour
     
     public void playButtonCallback()
     {
-        SceneManager.loadTierSelector(canvas);
+        SceneManager.loadGame();
     }
     
     public void settingsCallback()
@@ -22,10 +22,5 @@ public class MainMenuInput : MonoBehaviour
     public void creditCallback()
     {
         SceneManager.loadCredits(canvas);
-    }
-
-    public void inventoryCallback()
-    {
-        SceneManager.loadInventory(canvas);
     }
 }
