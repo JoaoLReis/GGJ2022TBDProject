@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     Touch touch;
 
+    private Camera camera;
+    
     private PlayerMovement playerMovement;
     public PlayerMovement PlayerMovement => playerMovement;
     
@@ -38,12 +40,17 @@ public class PlayerController : MonoBehaviour
    
     private bool canMove;
 
-    private bool zooming = false;
+    private bool isTouchZooming = false;
     private bool hasFinishedTrack;
+
+    private float currentZoom;
+    private float zoomTimer;
 
     public bool HasFinishedTrack => hasFinishedTrack;
 
     float TouchZoomSpeed = 0.007f;
+    float ScrollZoomSpeed = 1.0f;
+    float ScrollZoomAmount = 2.0f;
     float ZoomMinBound = 2.2f;
     float ZoomMaxBound = 10.0f;
 
@@ -51,6 +58,12 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         outOfBoundsAnimation = GetComponentInChildren<OutOfBoundsAnimation>();
+        camera = Camera.main;
+    }
+
+    private void Start()
+    {
+        currentZoom = camera.orthographicSize;
     }
 
     public void StartTurn()
@@ -114,16 +127,16 @@ public class PlayerController : MonoBehaviour
             // Pinch to zoom
             if (Input.touchCount == 2) {
                 CheckZoom();
-                zooming = true;
-            } else if(!zooming) {
+                isTouchZooming = true;
+            } else if(!isTouchZooming) {
                 CheckDrag();
             }
         }
         else
         {
-            //TODO: Polish the zoom input - this is just for a commit experience
-            //zooming = false;
-            Zoom(Input.mouseScrollDelta.y * 10, TouchZoomSpeed);
+            isTouchZooming = false;
+            if (Input.mouseScrollDelta.y != 0)
+                Zoom(Input.mouseScrollDelta.y, -ScrollZoomAmount);
 
             if (Input.GetMouseButtonDown(0))
                 playerMovement.DragStart(Input.mousePosition);            
@@ -138,7 +151,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, ZoomMinBound, ZoomMaxBound);
+        zoomTimer = Mathf.Clamp01(zoomTimer + Time.deltaTime * ScrollZoomSpeed);
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, currentZoom, zoomTimer);
     }
 
     private void CheckZoom() {
@@ -215,9 +229,10 @@ public class PlayerController : MonoBehaviour
     void Zoom(float deltaMagnitudeDiff, float speed)
     {
         Debug.Log(deltaMagnitudeDiff);
-        float size = Camera.main.orthographicSize + deltaMagnitudeDiff * speed;
+        float size = camera.orthographicSize + deltaMagnitudeDiff * speed;
         // set min and max value of Clamp function upon your requirement
-        Camera.main.orthographicSize = Mathf.Clamp(size, ZoomMinBound, ZoomMaxBound);
+        currentZoom = Mathf.Clamp(size, ZoomMinBound, ZoomMaxBound);
+        zoomTimer = 0;
     }
 
     private void LateUpdate()
