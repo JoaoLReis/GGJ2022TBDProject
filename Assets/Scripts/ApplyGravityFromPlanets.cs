@@ -30,6 +30,13 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             Vector2 v2Pos = new Vector2(transform.position.x, transform.position.y);
             Vector2 dir = (anchorPoint - v2Pos);
 
+            if (dir.magnitude < closestPlanet.localScale.x * 0.5f + 0.1f)
+			{
+                PlayerCrash.Invoke();
+                Debug.Log("Kaboom");
+                return;
+			}
+
             //apply gravitational force
             float r = dir.magnitude;
             float totalForce = -(starMass) / (r * r);

@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
 
         isMoving = playerMovement.Rb.velocity.magnitude > MIN_VELOCITY_EPSILON;
         
+        transform.up = playerMovement.Rb.velocity;
+
         if (isOutOfBounds && !startedRespawning)
         {
             StartCoroutine(nameof(OutOfBoundsRespawn));
