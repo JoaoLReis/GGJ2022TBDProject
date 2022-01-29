@@ -56,6 +56,6 @@ public class GravityWaves : MonoBehaviour
         waves.transform.localScale *= objectSizeMultiplier;
         
         var sizeOverLifetimeModule = waves.sizeOverLifetime;
-        sizeOverLifetimeModule.sizeMultiplier = objectSizeMultiplier + gravityRadius;
+        sizeOverLifetimeModule.sizeMultiplier = gravityRadius * 0.9f;
     }
 }
