@@ -38,7 +38,7 @@ public class OrbitalController : MonoBehaviour
         isPulling = !isPulling;
 
         if (_gravityWaves)
-            _gravityWaves.ChangeDirection(isPulling);
+            _gravityWaves.ApplyDirection(isPulling);
     }
 
     void OnTriggerEnter2D(Collider2D other)
