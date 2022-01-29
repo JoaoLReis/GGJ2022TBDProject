@@ -6,6 +6,7 @@ public class OrbitalController : MonoBehaviour
 {
     private bool isPulling = true;
     private PlayerController _playerController;
+    private GravityWaves _gravityWaves;
     public float orbitDistance = 1.0f;
     private PointEffector2D _gravityEffector;
     private bool playerInRange = false;
@@ -24,16 +25,20 @@ public class OrbitalController : MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 relativePos;
     private Quaternion rotation;
-
-    void Start()
+    
+    void Awake()
     {
         _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         _gravityEffector = GetComponent<PointEffector2D>();
+        _gravityWaves = GetComponent<GravityWaves>();
     }
 
     public void ChangeDirection()
     {
         isPulling = !isPulling;
+
+        if (_gravityWaves)
+            _gravityWaves.ChangeDirection(isPulling);
     }
 
     void OnTriggerEnter2D(Collider2D other)
