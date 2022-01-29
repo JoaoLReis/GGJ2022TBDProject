@@ -96,8 +96,15 @@ public class PlayerController : MonoBehaviour
         {
             CheckDragInput();
         } else {
+            if (Input.touchCount == 2)
+            {
+                CheckZoom();
+            }
             CheckClick();
 		}
+
+        if (Input.mouseScrollDelta.y != 0)
+            Zoom(Input.mouseScrollDelta.y, -ScrollZoomAmount);
 
         isMoving = playerMovement.Rb.velocity.magnitude > MIN_VELOCITY_EPSILON;
         
@@ -107,6 +114,9 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(nameof(OutOfBoundsRespawn));
         }
+
+        zoomTimer = Mathf.Clamp01(zoomTimer + Time.deltaTime * ScrollZoomSpeed);
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, currentZoom, zoomTimer);
     }
 
     private IEnumerator OutOfBoundsRespawn()
@@ -153,7 +163,6 @@ public class PlayerController : MonoBehaviour
             // Pinch to zoom
             if (Input.touchCount == 2) {
                 CheckZoom();
-                isTouchZooming = true;
             } else if(!isTouchZooming) {
                 CheckDrag();
             }
@@ -161,8 +170,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             isTouchZooming = false;
-            if (Input.mouseScrollDelta.y != 0)
-                Zoom(Input.mouseScrollDelta.y, -ScrollZoomAmount);
 
             if (Input.GetMouseButtonDown(0))
                 playerMovement.DragStart(Input.mousePosition);            
@@ -178,12 +185,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        zoomTimer = Mathf.Clamp01(zoomTimer + Time.deltaTime * ScrollZoomSpeed);
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, currentZoom, zoomTimer);
     }
 
-    private void CheckZoom() {
+    private void CheckZoom()
+    {
+        isTouchZooming = true;
         playerMovement.DragReset();
 
         // get current touch positions
