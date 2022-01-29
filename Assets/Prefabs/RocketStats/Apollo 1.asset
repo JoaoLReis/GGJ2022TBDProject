@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8c999bb4162043daba95fcdf32d4a56, type: 3}
-  m_Name: MetalCap
+  m_Name: Apollo 1
   m_EditorClassIdentifier: 
-  capName: Strung Cap
-  mass: 4
-  physicsMaterial: {fileID: 6200000, guid: bb4d1ed847ed447f2a0abfdaa9c10ab5, type: 2}
-  linearDrag: 3
-  maxDrag: 5
-  power: 8
-  capMaterial: {fileID: 2100000, guid: 948fc832f292948f1953bf8e9d2994e7, type: 2}
-  capType: 1
+  rocketName: Apollo 1
+  mass: 1
+  maxInputDrag: 5
+  power: 1
+  rocketType: 0

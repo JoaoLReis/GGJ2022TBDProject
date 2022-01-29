@@ -25,11 +25,6 @@ public class GameManager : SceneBoundSingletonBehaviour<GameManager>
         FindObjectOfType<SoundManager>().playCheer();
     }
 
-    public void SetPlayerFinished(PlayerController playerController)
-    {
-
-    }
-
     private bool IsPlayerMoving()
     {
         return player.IsMoving;

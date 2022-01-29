@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static float TimeOutWhenFlying = 5.0f;
 
     public static Action PlayerShoot;
+    public static Action PlayerFinished;
 
     public Sprite PlayerAvatar;
     public GameObject decal;
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Finished track! " + gameObject.name);
         hasFinishedTrack = true;
-        GameManager.Instance.SetPlayerFinished(this);
+        PlayerFinished.Invoke();
     }
 
     private void Update()

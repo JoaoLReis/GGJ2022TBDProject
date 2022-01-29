@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float power = 10f;
-    public float maxDrag = 5f;
+    public float maxInputDrag = 5f;
     public float minForce = 2f;
     private Rigidbody2D rb;
     private LineRenderer lr;
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 dragStartPos;
     public Vector3 movementStartPosition;
 
-    public CapStats capStats;
+    public RocketStats rocketStats;
     
     public Rigidbody2D Rb
     {
@@ -37,11 +37,9 @@ public class PlayerMovement : MonoBehaviour
         capPosZ = transform.position.z;
         movementStartPosition = transform.position;
 
-        rb.mass = capStats.mass;
-        rb.drag = capStats.linearDrag;
-        GetComponent<CircleCollider2D>().sharedMaterial = capStats.physicsMaterial;
-        maxDrag = capStats.maxDrag;
-        power = capStats.power;
+        rb.mass = rocketStats.mass;
+        maxInputDrag = rocketStats.maxInputDrag;
+        power = rocketStats.power;
     }
 
     public void DragStart(Vector3 touchPosition)
@@ -60,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         draggingPos.z = capPosZ;
 
         Vector3 force = dragStartPos - draggingPos;
-        Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
+        Vector3 clampedForce = Vector3.ClampMagnitude(force, maxInputDrag) * power;
         if (clampedForce.magnitude >= minForce) 
         {
             lr.enabled = false;
@@ -69,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         lr.enabled = true;
 
         lr.positionCount = 2;
-        Vector3 newVector = Vector3.ClampMagnitude((dragStartPos - draggingPos), maxDrag);
+        Vector3 newVector = Vector3.ClampMagnitude((dragStartPos - draggingPos), maxInputDrag);
         lr.SetPosition(1, (newVector * 0.33f) + movementStartPosition);
     }
 
@@ -82,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         dragReleasePos.z = capPosZ;
 
         Vector3 force = dragStartPos - dragReleasePos;
-        Vector3 clampedForce = Vector3.ClampMagnitude(force, maxDrag) * power;
+        Vector3 clampedForce = Vector3.ClampMagnitude(force, maxInputDrag) * power;
 
         if(clampedForce.magnitude >= minForce) {
             rb.AddForce(clampedForce, ForceMode2D.Impulse);
@@ -115,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     void playCapSound() 
     {
-        SoundManager.Instance.playCapSound(capStats.capType);
+        SoundManager.Instance.playCapSound(rocketStats.rocketType);
     }
 
     void playCanHittingSound() 

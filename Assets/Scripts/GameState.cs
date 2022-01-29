@@ -19,6 +19,8 @@ public abstract class GameState
 
     public virtual void OnUpdate()
     {
+        if (totalDuration <= 0) return;
+
         currentDuration += Time.deltaTime;
         
         if (currentDuration >= totalDuration)

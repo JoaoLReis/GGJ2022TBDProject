@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7170962038403184366}
   - component: {fileID: 8176501470703992212}
   m_Layer: 0
-  m_Name: Carica
+  m_Name: Rocket
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

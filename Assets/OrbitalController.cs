@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class OrbitalController : MonoBehaviour
@@ -11,6 +11,7 @@ public class OrbitalController : MonoBehaviour
     private bool playerInRange = false;
     private bool playerInOrbit = false;
 
+    public static Action PlayerOrbit;
 
     public Transform objectToOrbit; //Object To Orbit
     public Vector3 orbitAxis = Vector3.up; //Which vector to use for Orbit
@@ -59,6 +60,7 @@ public class OrbitalController : MonoBehaviour
     private void HandleOrbit()
     {
         playerInOrbit = true;
+        PlayerOrbit.Invoke();
 
         Vector2 vectorToCenter = transform.position - _playerController.transform.position;
         Vector2 currentUp = _playerController.transform.up;

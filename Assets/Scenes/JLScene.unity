@@ -1117,6 +1117,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: A_ROZ
       objectReference: {fileID: 0}
+    - target: {fileID: 3453404077323888754, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453404077323888754, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453404077323888754, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4050881131367945880, guid: d994ce03f259c48f58fca380c73843a1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1174,7 +1189,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170962038403184366, guid: d994ce03f259c48f58fca380c73843a1,
         type: 3}
+      propertyPath: maxDrag
+      value: 1.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170962038403184366, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
       propertyPath: capStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d1387bdfb2d846629375f4dd6399204,
+        type: 2}
+    - target: {fileID: 7170962038403184366, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
+      propertyPath: minForce
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7170962038403184366, guid: d994ce03f259c48f58fca380c73843a1,
+        type: 3}
+      propertyPath: rocketStats
       value: 
       objectReference: {fileID: 11400000, guid: 1d1387bdfb2d846629375f4dd6399204,
         type: 2}

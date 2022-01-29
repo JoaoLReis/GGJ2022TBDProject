@@ -14,12 +14,12 @@ public class SoundManager : SceneBoundSingletonBehaviour<SoundManager>
         sources = GetComponents<AudioSource>();
     }
 
-    public void playCapSound(CapType type) {
+    public void playCapSound(RocketType type) {
         switch(type) {
-            case CapType.Plastic:
+            case RocketType.Plastic:
                 playAudioClip(soundbank.playPlasticCap);
                 break;
-            case CapType.Metal:
+            case RocketType.Metal:
                 playAudioClip(soundbank.playMetalCap);
                 break;
         }

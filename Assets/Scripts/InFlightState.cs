@@ -5,42 +5,33 @@ using UnityEngine;
 
 public class InFlightState : GameState
 {
-    private bool alreadyEnded;
+    public override void Setup(GameStateMachine gameStateMachine)
+    {
+        base.Setup(gameStateMachine);
+        totalDuration = 12;
 
-    Coroutine delayEnd;
-    
+        OrbitalController.PlayerOrbit += OnPlayerOrbit;
+        PlayerController.PlayerFinished += OnPlayerFinished;
+    }
+
+    private void OnPlayerOrbit()
+    {
+        gameStateMachine.SetState<InOrbitState>();
+    }
+
+    private void OnPlayerFinished()
+	{
+        TriggerEndState();
+    }
+
     public override void OnEnter()
     {
         base.OnEnter();
         Debug.Log("In Flight State");
-        alreadyEnded = false;
-    }
-
-    public override void OnLeave()
-    {
-        base.OnLeave();
-        if (delayEnd != null)
-		{
-            gameStateMachine.StopCoroutine(delayEnd);
-            delayEnd = null;
-        }
     }
 
     protected override void TriggerEndState()
     {
         gameStateMachine.SetState<GameFinishState>();
-    }
-
-    public override void OnUpdate()
-    {
-        if (!alreadyEnded && GameManager.Instance.player.IsMoving)
-            delayEnd = gameStateMachine.StartCoroutine(DelayTriggerEndState());
-    }
-
-    private IEnumerator DelayTriggerEndState()
-    {
-        alreadyEnded = true;
-        yield return new WaitForSeconds(PlayerController.TimeOutWhenFlying);
-        TriggerEndState();
     }
 }
