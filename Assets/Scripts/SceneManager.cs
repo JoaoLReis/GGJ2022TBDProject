@@ -8,6 +8,9 @@ public class SceneManager : MonoBehaviour
     private static GameObject canvasMainMenu;
     private static GameObject canvasSettings;
 
+    private static int currentLevelIndex = 0;
+    private static string[] levelNames = {"Level1", "Level2", "Level3" };
+
     // Start is called before the first frame update
     void Awake() {
         DontDestroyOnLoad(this);
@@ -36,7 +39,7 @@ public class SceneManager : MonoBehaviour
     }
 
     public static void loadGame() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(levelNames[currentLevelIndex]);
     }
     
     public static void loadCredits(GameObject canvas) {
@@ -49,5 +52,11 @@ public class SceneManager : MonoBehaviour
         SceneManager.canvasMainMenu = canvas;
         canvas.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Settings", LoadSceneMode.Additive);
+    }
+
+    public static void loadNextLevel()
+    {
+        currentLevelIndex = (++currentLevelIndex) % levelNames.Length;
+        loadGame();
     }
 }

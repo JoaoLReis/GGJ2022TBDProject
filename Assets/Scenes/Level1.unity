@@ -245,11 +245,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameResults
       objectReference: {fileID: 0}
-    - target: {fileID: 7097698328617922172, guid: 08aaf97fb421746bda5ed4dab1ae367b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8240020097260085310, guid: 08aaf97fb421746bda5ed4dab1ae367b,
         type: 3}
       propertyPath: m_Pivot.x
