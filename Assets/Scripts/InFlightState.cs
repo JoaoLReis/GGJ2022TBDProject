@@ -40,9 +40,7 @@ public class InFlightState : GameState
     private IEnumerator DelayTriggerEndState()
     {
         alreadyEnded = true;
-        Debug.Log("Starting cor In Flight State");
         yield return new WaitForSeconds(PlayerController.TimeOutWhenFlying);
-        Debug.Log("Ending cor In Flight State");
         TriggerEndState();
     }
 }
