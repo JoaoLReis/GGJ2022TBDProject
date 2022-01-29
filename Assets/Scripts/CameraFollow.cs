@@ -4,6 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     private GameManager gameManager;
     public float speed;
+    public Vector3 offset;
 
     private GameObject targetPlayer;
     private InterpolatedTransform interpolatedTransform;
@@ -27,7 +28,7 @@ public class CameraFollow : MonoBehaviour
         if (targetPlayer == null)
             return;
 
-        Vector3 targetPosition = targetPlayer.transform.position;
+        Vector3 targetPosition = targetPlayer.transform.position + offset;
         Vector3 position = transform.position;
         position = Vector3.Lerp(
             position,
