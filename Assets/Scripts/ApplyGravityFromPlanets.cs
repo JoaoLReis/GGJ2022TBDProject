@@ -25,7 +25,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     void Start()
     {
         PlayerController.PlayerRespawn += TryToDetach;
-        PlayerController.OnClick += TryToDetach;
+        PlayerController.OnClick += OnClick;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -54,6 +54,14 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         }
     }
 
+    public void OnClick()
+	{
+        TryToDetach();
+        positivePolarity = !positivePolarity;
+        starMass *= -1;
+        ChangePolarity.Invoke(positivePolarity);
+    }
+
     public void TryToDetach()
 	{
         Debug.Log("Trying to Detach");
@@ -62,9 +70,6 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             Detach();
             PlayerExitOrbit.Invoke();
         }
-        positivePolarity = !positivePolarity;
-        starMass *= -1;
-        ChangePolarity.Invoke(positivePolarity);
     }
 
     void Detach()
