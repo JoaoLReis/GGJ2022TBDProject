@@ -79,6 +79,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         anchorPoint = Vector2.zero;
         closestPlanet = null;
         inOrbit = false;
+        GameManager.Instance.Camera.SetTarget(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -117,6 +118,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
                     joint.motor = motorRef;
                     joint.enabled = true;
                     inOrbit = true;
+                    GameManager.Instance.Camera.SetTarget(closestPlanet.gameObject);
                 }
             }
         }
