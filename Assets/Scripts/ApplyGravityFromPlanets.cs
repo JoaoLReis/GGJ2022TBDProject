@@ -14,9 +14,12 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     public static Action PlayerCrash;
     public static Action PlayerOrbit;
     public static Action PlayerExitOrbit;
+    public static Action<bool> ChangePolarity;
 
     private bool inOrbit = false;
     Rigidbody2D rb2d;
+
+    public bool PositivePolarity => positivePolarity;
 
     // Use this for initialization
     void Start()
@@ -61,6 +64,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         }
         positivePolarity = !positivePolarity;
         starMass *= -1;
+        ChangePolarity.Invoke(positivePolarity);
     }
 
     void Detach()

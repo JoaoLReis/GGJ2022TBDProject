@@ -8,38 +8,36 @@ public class GravityWaves : MonoBehaviour
     [SerializeField] private ParticleSystem wavesAttraction;
     [SerializeField] private ParticleSystem wavesRepulsion;
 
-    private OrbitalController orbitalController;
+    private PlanetStats planetStats;
     private float objectSizeMultiplier;
+    private float gravityRadius;
+
+    private bool isPositiveMass;
 
     private void Awake()
     {
-        orbitalController = GetComponent<OrbitalController>();
+        planetStats = GetComponent<PlanetStats>();
+        gravityRadius = transform.GetChild(0).GetComponent<CircleCollider2D>().radius;
     }
 
     void Start()
     {
         objectSizeMultiplier = transform.localScale.x;
+        isPositiveMass = planetStats.mass > 0;
 
         ChangeSize(ref wavesAttraction);
         ChangeSize(ref wavesRepulsion);
-        ChangeDirection(true);
-        
+        ApplyDirection(isPositiveMass);
+
+        ApplyGravityFromPlanets.ChangePolarity += InvertDirection;
     }
 
-    // // For testing purposes
-    // void Update()
-    // {
-    //     if (Input.GetButtonDown("Fire1"))
-    //     {
-    //         ChangeDirection(true);
-    //     }
-    //     if (Input.GetButtonDown("Fire2"))
-    //     {
-    //         ChangeDirection(false);
-    //     }
-    // }
+    private void InvertDirection(bool polarity)
+    {
+        ApplyDirection(isPositiveMass == polarity);
+    }
 
-    public void ChangeDirection(bool isPulling)
+    public void ApplyDirection(bool isPulling)
     {
         if (isPulling)
         {
@@ -58,6 +56,6 @@ public class GravityWaves : MonoBehaviour
         waves.transform.localScale *= objectSizeMultiplier;
         
         var sizeOverLifetimeModule = waves.sizeOverLifetime;
-        sizeOverLifetimeModule.sizeMultiplier = objectSizeMultiplier + orbitalController.orbitDistance;
+        sizeOverLifetimeModule.sizeMultiplier = objectSizeMultiplier + gravityRadius;
     }
 }
