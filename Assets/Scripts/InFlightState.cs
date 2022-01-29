@@ -10,7 +10,8 @@ public class InFlightState : GameState
         base.Setup(gameStateMachine);
         totalDuration = 12;
 
-        OrbitalController.PlayerOrbit += OnPlayerOrbit;
+        ApplyGravityFromPlanets.PlayerOrbit += OnPlayerOrbit;
+        ApplyGravityFromPlanets.PlayerCrash += OnPlayerRespawn;
         PlayerController.PlayerFinished += OnPlayerFinished;
         PlayerController.PlayerRespawn += OnPlayerRespawn;
     }
