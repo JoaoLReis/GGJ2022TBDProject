@@ -16,7 +16,7 @@ public class PreGameState : GameState
 
     protected override void TriggerEndState()
     {
-        gameStateMachine.SetState<PlayerTurnState>();
+        gameStateMachine.SetState<PlayerInitialTurnState>();
     }
 
     public override void OnLeave()

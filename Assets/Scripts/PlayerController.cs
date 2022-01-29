@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float MIN_VELOCITY_EPSILON = 0.3f;
-    public static float RespawnWaitTime = 0.1f;
+    public static float RespawnWaitTime = 0.2f;
+    public static float TimeOutWhenFlying = 5.0f;
 
     public static Action PlayerShoot;
 
@@ -23,7 +24,6 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     public PlayerMovement PlayerMovement => playerMovement;
     
-    private PlayerTimer playerTimer;
     private OutOfBoundsAnimation outOfBoundsAnimation;
 
     [SerializeField]
@@ -50,23 +50,20 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerTimer = GetComponent<PlayerTimer>();
         outOfBoundsAnimation = GetComponentInChildren<OutOfBoundsAnimation>();
     }
 
-    public void StartTurn(float duration)
+    public void StartTurn()
     {
         ghost.SetActive(false);
         canMove = true;
         decal.SetActive(true);
-        playerTimer.startTimer(duration);
     }
 
     public void EndTurn()
     {
         playerMovement.Lr.positionCount = 0;
         playerMovement.Lr.enabled = false;
-        playerTimer.endTimer();
         DisablePlayer();
     }
 
@@ -74,7 +71,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Finished track! " + gameObject.name);
         hasFinishedTrack = true;
-        playerTimer.OnEndedTrack();
         GameManager.Instance.SetPlayerFinished(this);
     }
 

@@ -16,8 +16,9 @@ public class GameStateMachine : MonoBehaviour
     private void RegisterStates()
     {
         gameStates.Add(new PreGameState());
-        gameStates.Add(new PlayerTurnState());
-        gameStates.Add(new TurnEndState());
+        gameStates.Add(new PlayerInitialTurnState());
+        gameStates.Add(new InFlightState());
+        gameStates.Add(new InOrbitState());
         gameStates.Add(new GameFinishState());
 
         for (int i = 0; i < gameStates.Count; i++)
