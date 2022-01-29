@@ -125,7 +125,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            zooming = false;
+            //TODO: Polish the zoom input - this is just for a commit experience
+            //zooming = false;
+            Zoom(Input.mouseScrollDelta.y * 10, TouchZoomSpeed);
 
             if (Input.GetMouseButtonDown(0))
                 playerMovement.DragStart(Input.mousePosition);            
