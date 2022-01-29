@@ -9,6 +9,8 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     private Vector2 anchorPoint = Vector2.zero;
     private Transform closestPlanet;
 
+    private bool positivePolarity = true;
+
     public static Action PlayerCrash;
     public static Action PlayerOrbit;
 
@@ -56,6 +58,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             closestPlanet = null;
             inOrbit = false;
         }
+        positivePolarity = !positivePolarity;
         starMass *= -1;
     }
 
@@ -77,6 +80,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         {
             closestPlanet = collision.transform.parent;
             anchorPoint = closestPlanet.position;
+            starMass = closestPlanet.GetComponent<PlanetStats>().mass * (positivePolarity ? 1 : -1);
         }
     }
 
