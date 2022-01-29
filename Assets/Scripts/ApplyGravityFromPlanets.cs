@@ -76,14 +76,39 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetOrbit"))
         {
-            if(closestPlanet != null && rb2d.velocity.magnitude < 4f)
+            if (closestPlanet != null)
             {
-                //enter orbit
-                Debug.Log("Entering Orbit with planet" + collision.gameObject.name + "!");
+                Vector2 vectorToCenter = transform.position - closestPlanet.position;
+                Vector2 forward = transform.up;
+                Vector3 tangent = new Vector3(vectorToCenter.y, -vectorToCenter.x, 0);
+                int floatMultiplier = 1;
+                if (Vector3.Dot(forward, tangent) < 0)
+                {
+                    tangent = new Vector2(-vectorToCenter.y, vectorToCenter.x);
+                }
+                else
+                {
+                    floatMultiplier = -1;
+                }
 
-                PlayerOrbit.Invoke();
-                closestPlanet.GetComponent<HingeJoint2D>().enabled = true;
-                inOrbit = true;
+                if (Mathf.Abs(Vector3.Dot(forward, tangent)) < 0.5f)
+                {
+                    return;
+                }
+
+                if (rb2d.velocity.magnitude < 10f)
+                {
+                    //enter orbit
+                    Debug.Log("Entering Orbit with planet" + collision.gameObject.name + "!");
+
+                    PlayerOrbit.Invoke();
+                    HingeJoint2D joint = closestPlanet.GetComponent<HingeJoint2D>();
+                    JointMotor2D motorRef = joint.motor;
+                    motorRef.motorSpeed *= floatMultiplier;
+                    joint.motor = motorRef;
+                    joint.enabled = true;
+                    inOrbit = true;
+                }
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetGravity"))
