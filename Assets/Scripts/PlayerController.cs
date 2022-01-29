@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     public Sprite PlayerAvatar;
     public GameObject decal;
-    public GameObject ghost;
     public GameObject collisionParticleSystemPrefab;
     [SerializeField]
     private GameObject puffPrefab;
@@ -68,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
     public void StartTurn()
     {
-        ghost.SetActive(false);
         canMove = true;
         decal.SetActive(true);
     }
@@ -115,7 +113,6 @@ public class PlayerController : MonoBehaviour
         
         yield return new WaitForSeconds(RespawnWaitTime);
 
-        ghost.transform.position = playerMovement.movementStartPosition;
         transform.position = playerMovement.movementStartPosition;
         playerMovement.Rb.velocity = Vector2.zero;
     }
@@ -237,9 +234,6 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        ghost.SetActive(transform.position != playerMovement.movementStartPosition);
-
-        ghost.transform.position = playerMovement.movementStartPosition;
     }
 }
 
