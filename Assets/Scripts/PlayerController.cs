@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public static Action PlayerShoot;
     public static Action PlayerFinished;
     public static Action PlayerRespawn;
+    public static Action OnClick;
 
     public GameObject decal;
     public GameObject collisionParticleSystemPrefab;
@@ -60,10 +61,18 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        ApplyGravityFromPlanets.PlayerCrash += Puff;
+        ApplyGravityFromPlanets.PlayerCrash += Respawn;
         currentZoom = camera.orthographicSize;
     }
 
-    public void StartTurn()
+	private void OnDestroy()
+    {
+        ApplyGravityFromPlanets.PlayerCrash -= Puff;
+        ApplyGravityFromPlanets.PlayerCrash -= Respawn;
+    }
+
+	public void StartTurn()
     {
         canMove = true;
         decal.SetActive(true);
@@ -87,18 +96,20 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            CheckInput();
-        }
+            CheckDragInput();
+        } else {
+
+		}
 
         isMoving = playerMovement.Rb.velocity.magnitude > MIN_VELOCITY_EPSILON;
         
         if (isOutOfBounds && !startedRespawning)
         {
-            StartCoroutine(nameof(Respawn));
+            StartCoroutine(nameof(OutOfBoundsRespawn));
         }
     }
 
-    private IEnumerator Respawn()
+    private IEnumerator OutOfBoundsRespawn()
     {
         Debug.Log("Respawning!");
         startedRespawning = true;
@@ -106,16 +117,25 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         outOfBoundsAnimation.StartAnimation();
+        Puff();
 
-        Vector3 rocketPosition = transform.position; 
+        yield return new WaitForSeconds(RespawnWaitTime);
+
+        Respawn();
+    }
+
+    public void Puff()
+	{
+        Vector3 rocketPosition = transform.position;
         Vector3 position = new Vector3(rocketPosition.x, rocketPosition.y, -8f);
         GameObject puff = Instantiate(puffPrefab, position, Quaternion.identity);
         puff.GetComponent<SpriteRenderer>().color = playerColor;
         Destroy(puff.gameObject, 1f);
         SoundManager.Instance.PlayRespawnSound();
-        
-        yield return new WaitForSeconds(RespawnWaitTime);
+    }
 
+    public void Respawn()
+    {
         transform.position = playerMovement.movementStartPosition;
         playerMovement.Rb.velocity = Vector2.zero;
 
@@ -125,7 +145,7 @@ public class PlayerController : MonoBehaviour
         PlayerRespawn.Invoke();
     }
 
-    private void CheckInput()
+    private void CheckDragInput()
     {
         if (Input.touchCount > 0)
         {
@@ -195,6 +215,16 @@ public class PlayerController : MonoBehaviour
             if(playerMovement.DragRelease(touch.position)) {
                 Shoot();
             }
+        }
+    }
+
+    private void CheckClick()
+	{
+        touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
+        {
+            OnClick.Invoke();
         }
     }
 

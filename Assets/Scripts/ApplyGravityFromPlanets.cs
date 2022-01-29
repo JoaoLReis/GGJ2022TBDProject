@@ -71,6 +71,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         {
             anchorPoint = Vector2.zero;
             closestPlanet = null;
+            inOrbit = false;
         }
     }
 }
