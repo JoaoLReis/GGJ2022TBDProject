@@ -39,7 +39,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
                     return;
                 }
 
-                if (Vector2.Dot(rb2d.velocity.normalized, dir.normalized) < 0.1f)
+                if (dir.magnitude < closestPlanet.localScale.x * 0.5f + 0.1f)
 			    {
                     PlayerCrash.Invoke();
                     Debug.Log("Kaboom");
