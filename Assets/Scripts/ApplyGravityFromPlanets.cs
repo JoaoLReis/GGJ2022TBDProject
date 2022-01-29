@@ -13,6 +13,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 
     public static Action PlayerCrash;
     public static Action PlayerOrbit;
+    public static Action PlayerExitOrbit;
 
     private bool inOrbit = false;
     Rigidbody2D rb2d;
@@ -20,7 +21,8 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        PlayerController.OnClick += Detach;
+        PlayerController.PlayerRespawn += TryToDetach;
+        PlayerController.OnClick += TryToDetach;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -33,12 +35,14 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             Vector2 dir = (anchorPoint - v2Pos);
 
             if (dir.magnitude < closestPlanet.localScale.x * 0.5f + 0.1f)
-			{
+            {
+                Detach();
                 PlayerCrash.Invoke();
-                Debug.Log("Kaboom");
+                Debug.Log("Kaboom"); 
                 return;
 			}
 
+            Debug.Log("Applying Gravity");
             //apply gravitational force
             float r = dir.magnitude;
             float totalForce = -(starMass) / (r * r);
@@ -47,26 +51,32 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         }
     }
 
-    public void Detach()
+    public void TryToDetach()
 	{
         Debug.Log("Trying to Detach");
         if (inOrbit && closestPlanet != null)
         {
-            Debug.Log("Detaching");
-            closestPlanet.GetComponent<HingeJoint2D>().enabled = false;
-            anchorPoint = Vector2.zero;
-            closestPlanet = null;
-            inOrbit = false;
+            Detach();
+            PlayerExitOrbit.Invoke();
         }
         positivePolarity = !positivePolarity;
         starMass *= -1;
+    }
+
+    void Detach()
+    {
+        Debug.Log("Detaching");
+        closestPlanet.GetComponent<HingeJoint2D>().enabled = false;
+        anchorPoint = Vector2.zero;
+        closestPlanet = null;
+        inOrbit = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetOrbit"))
         {
-            if(rb2d.velocity.magnitude < 4f)
+            if(closestPlanet != null && rb2d.velocity.magnitude < 4f)
             {
                 //enter orbit
                 Debug.Log("Entering Orbit with planet" + collision.gameObject.name + "!");
@@ -86,12 +96,12 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        /*if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetGravity") && closestPlanet == collision.transform.parent)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetGravity") && closestPlanet == collision.transform.parent)
         {
             Debug.Log("Exiting gravity field for planet " + collision.transform.parent.name + "!");
             anchorPoint = Vector2.zero;
             closestPlanet = null;
             inOrbit = false;
-        }*/
+        }
     }
 }

@@ -11,13 +11,18 @@ public class InOrbitState : GameState
         totalDuration = 0;
 
         //TODO add callback for when player leaves orbit
-        //OrbitalController.PlayerOrbit += OnPlayerOrbit;
+        ApplyGravityFromPlanets.PlayerExitOrbit += OnPlayerExitOrbit;
         PlayerController.PlayerFinished += OnPlayerFinished;
     }
 
     private void OnPlayerFinished()
     {
         TriggerEndState();
+    }
+
+    private void OnPlayerExitOrbit()
+    {
+        gameStateMachine.SetState<InFlightState>();
     }
 
     public override void OnEnter()

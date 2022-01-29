@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
     public void Respawn()
     {
         transform.position = playerMovement.movementStartPosition;
+        transform.rotation = Quaternion.identity;
         playerMovement.Rb.velocity = Vector2.zero;
 
         isOutOfBounds = false;
