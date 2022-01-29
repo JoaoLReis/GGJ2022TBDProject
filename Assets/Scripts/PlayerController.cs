@@ -144,8 +144,10 @@ public class PlayerController : MonoBehaviour
             
             if (Input.GetMouseButtonUp(0)) 
             {
-                playerMovement.DragRelease(Input.mousePosition);
-                Shoot();
+                if (playerMovement.DragRelease(Input.mousePosition))
+                {
+                    Shoot();
+                }
             }
         }
 
