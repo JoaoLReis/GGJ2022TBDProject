@@ -135,9 +135,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetGravity") && closestPlanet == collision.transform.parent)
         {
             Debug.Log("Exiting gravity field for planet " + collision.transform.parent.name + "!");
-            anchorPoint = Vector2.zero;
-            closestPlanet = null;
-            inOrbit = false;
+            Detach();
         }
     }
 }
