@@ -16,17 +16,16 @@ public class OutOfBoundsAnimation : MonoBehaviour
         model3D = GetComponent<MeshRenderer>();
         rigidbody3D.isKinematic = true;
         playerController = transform.parent.GetComponent<PlayerController>();
-        model3D.material = playerController.MeshRenderer.material;
     }
 
     public void StartAnimation()
     {
+        Debug.Log("Animating Out Of Bounds!");
         Vector2 velocity = playerController.PlayerMovement.Rb.velocity;
-        playerController.MeshRenderer.enabled = false;
         
         rigidbody3D.isKinematic = false;
         rigidbody3D.constraints = RigidbodyConstraints.None;
-        model3D.enabled = true;
+        model3D.enabled = false;
         
         rigidbody3D.AddTorque(new Vector3(-velocity.y, -velocity.x, 0) * torqueMultiplier, ForceMode.Impulse);
 
@@ -42,14 +41,14 @@ public class OutOfBoundsAnimation : MonoBehaviour
     private void EndAnimation()
     {
         playerController.PlayerMovement.Rb.velocity = Vector2.zero;
-        playerController.MeshRenderer.enabled = true;
         
         rigidbody3D.isKinematic = true;
         rigidbody3D.constraints = RigidbodyConstraints.FreezeRotation;
-        model3D.enabled = false;
+        model3D.enabled = true;
 
         Transform transform3D = transform;
-        Transform transform2D = playerController.MeshRenderer.transform;
+        Transform transform2D = playerController.transform;
+        Debug.Log("Animating Out Of Bounds!");
         transform3D.position = transform2D.position;
         transform3D.rotation = transform2D.rotation;
     }

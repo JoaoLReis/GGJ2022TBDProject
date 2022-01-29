@@ -12,6 +12,7 @@ public class InFlightState : GameState
 
         OrbitalController.PlayerOrbit += OnPlayerOrbit;
         PlayerController.PlayerFinished += OnPlayerFinished;
+        PlayerController.PlayerRespawn += OnPlayerRespawn;
     }
 
     private void OnPlayerOrbit()
@@ -23,6 +24,11 @@ public class InFlightState : GameState
 	{
         TriggerEndState();
     }
+    private void OnPlayerRespawn()
+    {
+        gameStateMachine.SetState<PreGameState>();
+    }
+
 
     public override void OnEnter()
     {

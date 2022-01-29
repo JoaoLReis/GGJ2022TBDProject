@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public static Action PlayerShoot;
     public static Action PlayerFinished;
+    public static Action PlayerRespawn;
 
-    public Sprite PlayerAvatar;
     public GameObject decal;
     public GameObject collisionParticleSystemPrefab;
     [SerializeField]
@@ -27,17 +27,14 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement PlayerMovement => playerMovement;
     
     private OutOfBoundsAnimation outOfBoundsAnimation;
-
-    [SerializeField]
-    private MeshRenderer meshRenderer;
-    public MeshRenderer MeshRenderer => meshRenderer;
     
     private bool isMoving;
     public bool IsMoving => isMoving;
 
     private bool isOutOfBounds;
     public bool IsOutOfBounds => isOutOfBounds;
-   
+    private bool startedRespawning = false;
+
     private bool canMove;
 
     private bool isTouchZooming = false;
@@ -95,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
         isMoving = playerMovement.Rb.velocity.magnitude > MIN_VELOCITY_EPSILON;
         
-        if (isOutOfBounds && !isMoving)
+        if (isOutOfBounds && !startedRespawning)
         {
             StartCoroutine(nameof(Respawn));
         }
@@ -103,10 +100,15 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        isOutOfBounds = false;
+        Debug.Log("Respawning!");
+        startedRespawning = true;
 
-        Vector3 capPosition = transform.position; 
-        Vector3 position = new Vector3(capPosition.x, capPosition.y, -8f);
+        yield return new WaitForSeconds(1.0f);
+
+        outOfBoundsAnimation.StartAnimation();
+
+        Vector3 rocketPosition = transform.position; 
+        Vector3 position = new Vector3(rocketPosition.x, rocketPosition.y, -8f);
         GameObject puff = Instantiate(puffPrefab, position, Quaternion.identity);
         puff.GetComponent<SpriteRenderer>().color = playerColor;
         Destroy(puff.gameObject, 1f);
@@ -116,6 +118,11 @@ public class PlayerController : MonoBehaviour
 
         transform.position = playerMovement.movementStartPosition;
         playerMovement.Rb.velocity = Vector2.zero;
+
+        isOutOfBounds = false;
+        startedRespawning = false;
+
+        PlayerRespawn.Invoke();
     }
 
     private void CheckInput()
@@ -191,14 +198,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Map"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("OutOfBounds"))
         {
             if (!isOutOfBounds)
             {
                 isOutOfBounds = true;
-                outOfBoundsAnimation.StartAnimation();
             }
         }
     }
