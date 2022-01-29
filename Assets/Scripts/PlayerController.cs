@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public static Action PlayerRespawn;
     public static Action OnClick;
 
-    public GameObject decal;
     public GameObject collisionParticleSystemPrefab;
     [SerializeField]
     private GameObject puffPrefab;
@@ -75,7 +74,6 @@ public class PlayerController : MonoBehaviour
 	public void StartTurn()
     {
         canMove = true;
-        decal.SetActive(true);
     }
 
     public void EndTurn()
@@ -269,7 +267,6 @@ public class PlayerController : MonoBehaviour
     private void DisablePlayer()
     {
         canMove = false;
-        decal.SetActive(false);
     }
 
     void Zoom(float deltaMagnitudeDiff, float speed)
