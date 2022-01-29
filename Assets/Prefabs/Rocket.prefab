@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 4427884712970964134}
   - component: {fileID: 232200849}
   - component: {fileID: 7170962038403184366}
-  - component: {fileID: 8176501470703992212}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Player
@@ -139,8 +138,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4470005956131597921}
   - {fileID: 5666549942154449207}
+  - {fileID: 4470005956131597921}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,13 +156,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 3
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &3453404077323888748
 MonoBehaviour:
@@ -177,14 +176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9cfda21cd634a3da3491305ce3f118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerAvatar: {fileID: 0}
   decal: {fileID: 5871248768137128231}
   collisionParticleSystemPrefab: {fileID: 6296143290628225395, guid: e1f21617227c249108855d057c657715,
     type: 3}
   puffPrefab: {fileID: 6296143290628225395, guid: 1c6138b0f27cf46829dd7eb2de344090,
     type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
-  meshRenderer: {fileID: 0}
+  playerColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
 --- !u!120 &4427884712970964134
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -320,26 +317,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 10
-  maxDrag: 5
-  minForce: 1
+  maxInputDrag: 5
+  minForce: 1.7
   dragStartPos: {x: 0, y: 0, z: 0}
   movementStartPosition: {x: 0, y: 0, z: 0}
-  capStats: {fileID: 0}
---- !u!114 &8176501470703992212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3453404077323888751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f802f8a6e104b269e0e2bab9d7079d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  avatar: {fileID: 0}
-  timer: {fileID: 0}
-  medal: {fileID: 0}
+  rocketStats: {fileID: 11400000, guid: 1d1387bdfb2d846629375f4dd6399204, type: 2}
 --- !u!1 &5304757402189249109
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +459,7 @@ Transform:
   - {fileID: 6973937300010274204}
   - {fileID: 6397250801207380962}
   m_Father: {fileID: 3453404077323888749}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2889029986570605118
 MonoBehaviour:
@@ -503,6 +485,8 @@ GameObject:
   - component: {fileID: 2787213274143311857}
   - component: {fileID: 7302190861386601611}
   - component: {fileID: 11582623119759086}
+  - component: {fileID: 1911200527}
+  - component: {fileID: 1911200526}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -523,7 +507,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3453404077323888749}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2787213274143311857
 MeshFilter:
@@ -589,3 +573,32 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1911200527
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941822682391219822}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1911200526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941822682391219822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555d643ae94774f41a51e60471eb386a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torqueMultiplier: 0.2
