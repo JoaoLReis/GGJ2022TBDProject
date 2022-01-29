@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             CheckDragInput();
         } else {
-
+            CheckClick();
 		}
 
         isMoving = playerMovement.Rb.velocity.magnitude > MIN_VELOCITY_EPSILON;
@@ -222,10 +222,17 @@ public class PlayerController : MonoBehaviour
 
     private void CheckClick()
 	{
-        touch = Input.GetTouch(0);
-
-        if (touch.phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
+        if (Input.touchCount > 0)
         {
+            touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Ended || Input.GetMouseButtonUp(0))
+            {
+                OnClick.Invoke();
+            }
+        } 
+        else if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("Clicking");
             OnClick.Invoke();
         }
     }
