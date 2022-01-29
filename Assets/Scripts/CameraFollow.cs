@@ -11,10 +11,10 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        interpolatedTransform = GetComponent<InterpolatedTransform>();
-        interpolatedTransformUpdater = GetComponent<InterpolatedTransformUpdater>();
-        interpolatedTransform.enabled = true;
-        interpolatedTransformUpdater.enabled = true;
+        // interpolatedTransform = GetComponent<InterpolatedTransform>();
+        // interpolatedTransformUpdater = GetComponent<InterpolatedTransformUpdater>();
+        // interpolatedTransform.enabled = true;
+        // interpolatedTransformUpdater.enabled = true;
     }
 
     public void SetTarget(GameObject targetToFollow)
