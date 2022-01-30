@@ -129,6 +129,10 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             anchorPoint = closestPlanet.position;
             starMass = closestPlanet.GetComponent<PlanetStats>().mass * (positivePolarity ? 1 : -1);
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            PlayerCrash.Invoke();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
