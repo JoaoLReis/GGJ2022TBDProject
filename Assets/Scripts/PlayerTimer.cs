@@ -35,7 +35,6 @@ public class PlayerTimer : MonoBehaviour
         animator.enabled = true;
         avatar.rectTransform.localScale = Vector3.one;
         timerCoroutine = StartCoroutine(fillTimer(duration));
-        SoundManager.Instance.playStartTimerSound();
     }
 
     public void endTimer() {
@@ -48,9 +47,6 @@ public class PlayerTimer : MonoBehaviour
         avatar.rectTransform.localScale = Vector3.one * 0.7f;
         timer.fillAmount = 1.0f;
         isTickPlaying = false;
-
-        SoundManager.Instance.StopTickingSound();
-        SoundManager.Instance.playEndTimerSound();
     }
 
     IEnumerator fillTimer(float duration) {
@@ -63,7 +59,6 @@ public class PlayerTimer : MonoBehaviour
             
             if (duration - timePassed < TickTimeMinDuration && !isTickPlaying)
             {
-                SoundManager.Instance.playTickingSound();
                 animator.SetTrigger("OutOfTime");
                 isTickPlaying = true;
             }

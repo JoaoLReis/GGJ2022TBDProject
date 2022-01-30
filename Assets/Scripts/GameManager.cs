@@ -23,7 +23,7 @@ public class GameManager : SceneBoundSingletonBehaviour<GameManager>
     {
         gameResultsUI.Setup(player);
         gameResultsUI.gameObject.SetActive(true);
-        FindObjectOfType<SoundManager>().playCheer();
+        FindObjectOfType<SoundManager>().playShooting();
     }
 
     public bool IsPlayerMoving()

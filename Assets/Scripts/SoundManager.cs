@@ -14,44 +14,18 @@ public class SoundManager : SceneBoundSingletonBehaviour<SoundManager>
         sources = GetComponents<AudioSource>();
     }
 
-    public void playCapSound(RocketType type) {
-        switch(type) {
-            case RocketType.Plastic:
-                playAudioClip(soundbank.playPlasticCap);
-                break;
-            case RocketType.Metal:
-                playAudioClip(soundbank.playMetalCap);
-                break;
-        }
+    public void playShooting()
+    {
+        playAudioClip(soundbank.launching);
     }
 
-    public void playCheer() {
-        playAudioClip(soundbank.cheering);
+    public void playPolarity() {
+        playAudioClip(soundbank.polarity);
     }
     
     public void PlayRespawnSound() 
     {
         playAudioClip(soundbank.puff);
-    }
-
-    public void playTickingSound() 
-    {
-        playAudioClip(soundbank.ticking, true);
-    }
-    
-    public void StopTickingSound() 
-    {
-        StopAudioClip(soundbank.ticking);
-    }
-    
-    public void playStartTimerSound() 
-    {
-        playAudioClip(soundbank.startTicking);
-    }
-
-    public void playEndTimerSound() 
-    {
-        playAudioClip(soundbank.endTicking);
     }
 
     public void playCanHittingSound() 

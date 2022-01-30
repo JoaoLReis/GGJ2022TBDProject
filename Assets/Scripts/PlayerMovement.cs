@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     void playCapSound() 
     {
-        SoundManager.Instance.playCapSound(rocketStats.rocketType);
+        SoundManager.Instance.playShooting();
     }
 
     void playCanHittingSound() 
