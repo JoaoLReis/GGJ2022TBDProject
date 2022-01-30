@@ -16,4 +16,4 @@ MonoBehaviour:
   mass: 1
   maxInputDrag: 5
   power: 1
-  rocketType: 0
+  rocketType: 1
