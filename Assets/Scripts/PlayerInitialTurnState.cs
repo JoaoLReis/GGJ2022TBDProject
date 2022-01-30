@@ -7,7 +7,7 @@ public class PlayerInitialTurnState : GameState
     public override void Setup(GameStateMachine gameStateMachine)
     {
         base.Setup(gameStateMachine);
-        totalDuration = 20;
+        totalDuration = 0;
 
         PlayerController.PlayerShoot += OnPlayerShoot;
     }
