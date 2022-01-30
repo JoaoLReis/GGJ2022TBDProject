@@ -737,6 +737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 5635966661511094411, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5635966661511094414, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
         type: 3}
       propertyPath: m_RootOrder
@@ -792,7 +797,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5635966661511094512, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
+        type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 3453404077127480042}
+    m_RemovedComponents:
+    - {fileID: 5635966661511094512, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
+    - {fileID: 5635966661511094410, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
 --- !u!1001 &3453404077127480034
 PrefabInstance:
@@ -915,6 +927,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9cfda21cd634a3da3491305ce3f118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &3453404077127480042 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 3453404077323888754, guid: d994ce03f259c48f58fca380c73843a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3453404077127480034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5851110033247336671
 PrefabInstance:
   m_ObjectHideFlags: 0

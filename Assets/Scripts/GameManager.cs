@@ -21,6 +21,7 @@ public class GameManager : SceneBoundSingletonBehaviour<GameManager>
 
     public void ShowGameResults()
     {
+        gameResultsUI.Setup(player);
         gameResultsUI.gameObject.SetActive(true);
         FindObjectOfType<SoundManager>().playCheer();
     }
