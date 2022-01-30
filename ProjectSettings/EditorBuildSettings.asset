@@ -18,15 +18,30 @@ EditorBuildSettings:
     path: Assets/Scenes/Settings.unity
     guid: c9156b9d237734516b0f0666eee08da0
   - enabled: 1
+    path: Assets/Scenes/TierSelector.unity
+    guid: 6a1029698f75442a2a1636df11280ae2
+  - enabled: 1
     path: Assets/Scenes/Levels/Level1.unity
     guid: df27be3dce67b6340abb29b11c5d5389
   - enabled: 1
     path: Assets/Scenes/Levels/Level2.unity
-    guid: 24d9285c81b421e4c9650e33dd8ba307
+    guid: ba55c0d908714964e9a84c56f5f0699b
   - enabled: 1
     path: Assets/Scenes/Levels/Level3.unity
-    guid: f7666ac64c97cc94f8dfb5f1c3edd8b9
+    guid: 5d726bb9f5aeb0045927b172681761e2
   - enabled: 1
-    path: Assets/Scenes/TierSelector.unity
-    guid: 6a1029698f75442a2a1636df11280ae2
+    path: Assets/Scenes/Levels/Level4.unity
+    guid: f7a73922bb7244b4e8654d6674bf8328
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level5.unity
+    guid: 5c7bd14020986384f9885bd3025e8743
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level6.unity
+    guid: c5133fec54fa3454baef8cd6c0e7b4de
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level7.unity
+    guid: 2f7c153483e94544d91ee8be0d58324f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level8.unity
+    guid: 185acf53cdaf88842acb47125ab15e9e
   m_configObjects: {}

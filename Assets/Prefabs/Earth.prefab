@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 301146849906619034}
   - component: {fileID: 301146849906619038}
   - component: {fileID: 301146849906619111}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 5339891091671918736}
   - component: {fileID: 5339891091671918743}
   - component: {fileID: 5339891091671918737}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 3DModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5339891091671918741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: -0.27, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.36, y: 5.36, z: 5.36}
   m_ConstrainProportionsScale: 1
   m_Children: []

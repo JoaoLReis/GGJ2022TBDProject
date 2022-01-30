@@ -439,12 +439,12 @@ PrefabInstance:
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08805275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6839137
+      value: -2.95
       objectReference: {fileID: 0}
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
@@ -564,7 +564,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 
-      objectReference: {fileID: 3453404077127480042}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085ac0d0ec2e4d94ea970b110b9815f7, type: 3}
 --- !u!1001 &960644370
@@ -589,6 +589,26 @@ PrefabInstance:
     - target: {fileID: 1760186596, guid: 84e44e7c23a03410a88aad12580b0704, type: 3}
       propertyPath: m_Offset.y
       value: 0.0018809941
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 10.974108
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 18.086447
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.063126564
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -4.292653
       objectReference: {fileID: 0}
     - target: {fileID: 892917264784353926, guid: 84e44e7c23a03410a88aad12580b0704,
         type: 3}
@@ -961,12 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9cfda21cd634a3da3491305ce3f118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &3453404077127480042 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 3453404077323888754, guid: d994ce03f259c48f58fca380c73843a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3453404077127480034}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5851110033247336671
 PrefabInstance:
   m_ObjectHideFlags: 0

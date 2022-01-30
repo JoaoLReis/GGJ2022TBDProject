@@ -24,7 +24,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        PlayerController.PlayerRespawn += TryToDetach;
+        PlayerController.PlayerRespawn += OnPlayerRespawn;
         PlayerController.OnClick += OnClick;
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -59,6 +59,13 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         positivePolarity = !positivePolarity;
         if(closestPlanet != null) starMass = closestPlanet.GetComponent<PlanetStats>().GetPolarity(PositivePolarity); 
         ChangePolarity.Invoke(positivePolarity);
+    }
+
+    public void OnPlayerRespawn()
+	{
+        positivePolarity = true;
+        ChangePolarity.Invoke(positivePolarity);
+        TryToDetach();
     }
 
     public void TryToDetach()

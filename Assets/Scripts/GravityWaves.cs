@@ -18,6 +18,8 @@ public class GravityWaves : MonoBehaviour
     {
         planetStats = GetComponent<PlanetStats>();
         gravityRadius = transform.GetChild(0).GetComponent<CircleCollider2D>().radius;
+        if(GetComponent<HingeJoint2D>() != null)
+            GetComponent<HingeJoint2D>().connectedBody = FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>();
     }
 
     void Start()

@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4250569354906506007, guid: a5cd225288d6a4d4792356d7bd8282b4,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5cd225288d6a4d4792356d7bd8282b4, type: 3}
 --- !u!1001 &465991693
@@ -518,12 +523,12 @@ PrefabInstance:
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08805275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6839137
+      value: -2.95
       objectReference: {fileID: 0}
     - target: {fileID: 301146849906619034, guid: 664b5c8be7be5a341a485683f7297d43,
         type: 3}
@@ -594,6 +599,26 @@ PrefabInstance:
     - target: {fileID: 1760186596, guid: 84e44e7c23a03410a88aad12580b0704, type: 3}
       propertyPath: m_Offset.y
       value: -0.0013314337
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 7.943999
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 13.246689
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.021043062
+      objectReference: {fileID: 0}
+    - target: {fileID: 817976744949475732, guid: 84e44e7c23a03410a88aad12580b0704,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -6.712532
       objectReference: {fileID: 0}
     - target: {fileID: 892917264784353926, guid: 84e44e7c23a03410a88aad12580b0704,
         type: 3}
@@ -855,6 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0.03
+  axis: {x: 0, y: 1, z: 0}
 --- !u!33 &1131972803
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1081,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 0.03
+  axis: {x: 0, y: 1, z: 0}
 --- !u!33 &1722905544
 MeshFilter:
   m_ObjectHideFlags: 0
