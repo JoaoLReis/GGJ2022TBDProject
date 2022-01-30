@@ -9,7 +9,7 @@ public class SceneManager : MonoBehaviour
     private static GameObject canvasSettings;
 
     private static int currentLevelIndex = 0;
-    private static string[] levelNames = {"Level1", "Level2", "Level3" };
+    private static string[] levelNames = {"Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9", "Level10", "Level11", "Level12"};
 
     // Start is called before the first frame update
     void Awake() {
