@@ -33,7 +33,13 @@ public class GravityWaves : MonoBehaviour
             ApplyGravityFromPlanets.ChangePolarity += InvertDirection;
     }
 
-    private void InvertDirection(bool polarity)
+	private void OnDestroy()
+    {
+        if (planetStats.CanChangePolarity())
+            ApplyGravityFromPlanets.ChangePolarity -= InvertDirection;
+    }
+
+	private void InvertDirection(bool polarity)
     {
         ApplyDirection(isPositiveMass == polarity);
     }

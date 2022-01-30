@@ -18,6 +18,6 @@ public class PlanetStats : MonoBehaviour
 
 	public float GetPolarity(bool isPositivePolarity)
 	{
-		return mass * (!CanChangePolarity() || isPositivePolarity ? 1 : -1);
+		return mass * (CanChangePolarity() && !isPositivePolarity ? -1 : 1);
 	}
 }

@@ -57,6 +57,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 	{
         TryToDetach();
         positivePolarity = !positivePolarity;
+        if(closestPlanet != null) starMass = closestPlanet.GetComponent<PlanetStats>().GetPolarity(PositivePolarity); 
         ChangePolarity.Invoke(positivePolarity);
     }
 
