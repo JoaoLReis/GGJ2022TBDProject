@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
         transform.position = playerMovement.movementStartPosition;
         transform.rotation = Quaternion.identity;
         playerMovement.Rb.velocity = Vector2.zero;
+        playerMovement.Rb.angularVelocity = 0;
 
         trail.forceRenderingOff = false;
         trail.emitting = true;
