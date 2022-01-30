@@ -15,6 +15,11 @@ public class GameResultsUI : MonoBehaviour
     [SerializeField]
     private TMP_Text numDeaths;
 
+    void Awake()
+    {
+        GetComponent<Canvas>().worldCamera = Camera.main;
+    }
+
     public void Setup(PlayerController player)
     {
         numLevel.text = "Level " + (SceneManager.CurrentLevelIndex +1).ToString();
