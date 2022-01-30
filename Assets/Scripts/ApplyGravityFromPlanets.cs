@@ -75,7 +75,8 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     void Detach()
     {
         Debug.Log("Detaching");
-        closestPlanet.GetComponent<HingeJoint2D>().enabled = false;
+        if(closestPlanet.GetComponent<HingeJoint2D>() != null)
+            closestPlanet.GetComponent<HingeJoint2D>().enabled = false;
         anchorPoint = Vector2.zero;
         closestPlanet = null;
         inOrbit = false;
