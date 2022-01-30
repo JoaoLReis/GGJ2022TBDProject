@@ -14,11 +14,13 @@ public class GravityWaves : MonoBehaviour
 
     private bool isPositiveMass;
 
+    public bool shouldAttachToRocket = true;
+
     private void Awake()
     {
         planetStats = GetComponent<PlanetStats>();
         gravityRadius = transform.GetChild(0).GetComponent<CircleCollider2D>().radius;
-        if(GetComponent<HingeJoint2D>() != null)
+        if(shouldAttachToRocket && GetComponent<HingeJoint2D>() != null)
             GetComponent<HingeJoint2D>().connectedBody = FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>();
     }
 
