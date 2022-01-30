@@ -11,7 +11,7 @@ public class MainMenuInput : MonoBehaviour
     
     public void playButtonCallback()
     {
-        SceneManager.loadGame();
+        SceneManager.loadGame(canvas);
     }
     
     public void settingsCallback()

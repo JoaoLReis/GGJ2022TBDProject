@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TierSelectorInput : MonoBehaviour
 {
-    public void selectTierCallback()
+    public void loadLevel(int levelIndex)
     {
-        SceneManager.loadGame();
+        SceneManager.loadLevel(levelIndex);
     }
 }

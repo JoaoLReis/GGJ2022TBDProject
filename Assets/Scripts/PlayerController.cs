@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     Touch touch;
 
+    [SerializeField]
+    private TrailRenderer trail;
     private Camera camera;
     
     private PlayerMovement playerMovement;
@@ -135,7 +137,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Puff()
-	{
+    {
+        trail.forceRenderingOff = true;
+        trail.emitting = false;
         Vector3 rocketPosition = transform.position;
         Vector3 position = new Vector3(rocketPosition.x, rocketPosition.y, -8f);
         GameObject puff = Instantiate(puffPrefab, position, Quaternion.identity);
@@ -150,6 +154,9 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.identity;
         playerMovement.Rb.velocity = Vector2.zero;
 
+        trail.forceRenderingOff = false;
+        trail.emitting = true;
+        trail.Clear();
         isOutOfBounds = false;
         startedRespawning = false;
 
