@@ -22,6 +22,7 @@ public class SwitchWithPolarity : MonoBehaviour
 	private void OnDestroy()
     {
         ApplyGravityFromPlanets.ChangePolarity -= OnChangePolarity;
+        PlayerController.PlayerShoot -= OnPlayerShoot;
         PlayerController.PlayerRespawn -= OnPlayerRespawn;
     }
 
@@ -31,8 +32,9 @@ public class SwitchWithPolarity : MonoBehaviour
     }
 
     public void OnPlayerShoot()
-	{
-        img.enabled = true;
+    {
+        if (img != null)
+            img.enabled = true;
     }
     public void OnPlayerRespawn()
     {
