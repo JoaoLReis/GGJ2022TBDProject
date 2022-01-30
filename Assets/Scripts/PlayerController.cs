@@ -52,6 +52,17 @@ public class PlayerController : MonoBehaviour
     float ScrollZoomAmount = 2.0f;
     float ZoomMinBound = 2.2f;
     float ZoomMaxBound = 10.0f;
+    
+    #region Stats
+    
+    private float levelTime;
+    private int numPolaritySwitches;
+    private int numDeaths;
+    public float LevelTime => levelTime;
+    public int NumPolaritySwitches => numPolaritySwitches;
+    public int NumDeaths => numDeaths;
+
+    #endregion
 
     private void Awake()
     {
@@ -64,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         ApplyGravityFromPlanets.PlayerCrash += Puff;
         ApplyGravityFromPlanets.PlayerCrash += Respawn;
+        OnClick += IncrementPolaritySwitchCounter;
         currentZoom = camera.orthographicSize;
     }
 
@@ -94,6 +106,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        levelTime += Time.deltaTime;
+        
         if (canMove)
         {
             CheckDragInput();
@@ -151,6 +165,8 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        numDeaths++;
+
         transform.position = playerMovement.movementStartPosition;
         transform.rotation = Quaternion.identity;
         playerMovement.Rb.velocity = Vector2.zero;
@@ -248,6 +264,11 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Clicking");
             OnClick.Invoke();
         }
+    }
+
+    private void IncrementPolaritySwitchCounter()
+    {
+        numPolaritySwitches++;
     }
 
     private void OnTriggerExit2D(Collider2D other)
