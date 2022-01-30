@@ -17,9 +17,10 @@ public class GameResultsUI : MonoBehaviour
 
     public void Setup(PlayerController player)
     {
-        numLevel.text = "Level " + (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex - 3).ToString();
-        
-        timeToEnd.text = ((int) player.LevelTime).ToString();
+        numLevel.text = "Level " + (SceneManager.CurrentLevelIndex +1).ToString();
+        float fractionsOfASecond = (player.LevelTime % 1);
+        float restOfFractions = (fractionsOfASecond * 100) % 1;
+        timeToEnd.text = (player.LevelTime - fractionsOfASecond).ToString() + ":" + (fractionsOfASecond*100 - restOfFractions);
         polarityChangesToEnd.text = player.NumPolaritySwitches.ToString();
         numDeaths.text = player.NumDeaths.ToString();
     }
