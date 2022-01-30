@@ -38,8 +38,11 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    public static void loadGame() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levelNames[currentLevelIndex]);
+    public static void loadGame(GameObject canvas)
+    {
+        SceneManager.canvasMainMenu = canvas;
+        canvas.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TierSelector", LoadSceneMode.Additive);
     }
     
     public static void loadCredits(GameObject canvas) {
@@ -57,6 +60,13 @@ public class SceneManager : MonoBehaviour
     public static void loadNextLevel()
     {
         currentLevelIndex = (++currentLevelIndex) % levelNames.Length;
-        loadGame();
+        loadLevel(currentLevelIndex);
+    }
+
+    public static void loadLevel(int levelIndex)
+    {
+        if (levelIndex > levelNames.Length)
+            levelIndex = 0;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(levelNames[levelIndex]);
     }
 }

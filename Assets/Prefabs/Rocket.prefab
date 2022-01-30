@@ -182,6 +182,7 @@ MonoBehaviour:
   puffPrefab: {fileID: 6296143290628225395, guid: 1c6138b0f27cf46829dd7eb2de344090,
     type: 3}
   playerColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+  trail: {fileID: 536056656}
 --- !u!120 &4427884712970964134
 LineRenderer:
   m_ObjectHideFlags: 0
