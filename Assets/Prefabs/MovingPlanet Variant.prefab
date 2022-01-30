@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 5635966661511094411, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
         type: 3}
       propertyPath: m_Name
-      value: MovingPlanet
+      value: MovingPlanet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5635966661511094412, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
         type: 3}
@@ -174,3 +174,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4429732265835094219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100962856641167419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a173dfe46e3cf43ae8308c6c8dfd15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 1

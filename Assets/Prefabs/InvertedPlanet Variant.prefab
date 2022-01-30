@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 5635966661511094411, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
         type: 3}
       propertyPath: m_Name
-      value: InvertedPlanet
+      value: InvertedPlanet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5635966661511094412, guid: 8e1c01f762670c44c97b3bbf48eb57fb,
         type: 3}
@@ -127,5 +127,8 @@ PrefabInstance:
       propertyPath: m_Motor.m_MaximumMotorForce
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5635966661511094410, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
+    - {fileID: 5635966661511094512, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
+    - {fileID: 5635966661511094515, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e1c01f762670c44c97b3bbf48eb57fb, type: 3}

@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 1414087701}
   - component: {fileID: 1414087702}
   - component: {fileID: 2087955908037205660}
+  - component: {fileID: 3772002091566563866}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -879,7 +880,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 4250569354906506006}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 457
+    m_Bits: 489
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -918,8 +919,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
@@ -1047,3 +1048,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   waveSpeed: 1
+--- !u!114 &3772002091566563866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250569354906506002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea0dbb6761f2db41996f281b6c8e7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positiveColor: {r: 0.14509805, g: 0.2, b: 0.50980395, a: 1}
+  negativeColor: {r: 0.50980395, g: 0.41358045, b: 0.14509803, a: 1}
