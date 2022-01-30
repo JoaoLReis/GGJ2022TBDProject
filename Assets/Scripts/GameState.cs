@@ -22,9 +22,12 @@ public abstract class GameState
         if (totalDuration <= 0) return;
 
         currentDuration += Time.deltaTime;
-        
+
         if (currentDuration >= totalDuration)
+        {
+            Debug.Log("Timed out!");
             TriggerEndState();
+        }
     }
 
     protected abstract void TriggerEndState();

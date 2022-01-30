@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnEndTrack()
     {
-        Debug.Log("Finished track! " + gameObject.name);
+        //Debug.Log("Finished track! " + gameObject.name);
         hasFinishedTrack = true;
         PlayerFinished.Invoke();
     }
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
         } 
         else if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("Clicking");
+            //Debug.Log("Clicking");
             OnClick.Invoke();
         }
     }
@@ -284,7 +284,6 @@ public class PlayerController : MonoBehaviour
 
     void Zoom(float deltaMagnitudeDiff, float speed)
     {
-        Debug.Log(deltaMagnitudeDiff);
         float size = camera.orthographicSize + deltaMagnitudeDiff * speed;
         // set min and max value of Clamp function upon your requirement
         currentZoom = Mathf.Clamp(size, ZoomMinBound, ZoomMaxBound);
