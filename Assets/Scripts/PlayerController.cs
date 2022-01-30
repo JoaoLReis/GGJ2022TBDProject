@@ -263,12 +263,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!IsMoving)
-            return;
-        
-        GameObject ps = Instantiate(collisionParticleSystemPrefab, other.GetContact(0).point, Quaternion.identity);
-        ps.GetComponent<SpriteRenderer>().color = playerColor;
-        Destroy(ps.gameObject, 0.5f);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Planet"))
+        {
+            Puff();
+            Respawn();
+        }
     }
 
     private void Shoot()

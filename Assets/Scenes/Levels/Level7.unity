@@ -862,6 +862,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1272808679
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272808671}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.65
 --- !u!114 &1414087687 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4250569354906506005, guid: a5cd225288d6a4d4792356d7bd8282b4,
@@ -931,6 +947,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1629081574
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629081566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.65
 --- !u!1001 &2012402536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -947,6 +979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InvertedPlanet Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323597950607651571, guid: 780c44ece916e4a4aac5660ec5ee8847,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6323597950607651574, guid: 780c44ece916e4a4aac5660ec5ee8847,
         type: 3}
@@ -1050,7 +1087,7 @@ PrefabInstance:
     - target: {fileID: 6323597950607651571, guid: 780c44ece916e4a4aac5660ec5ee8847,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6323597950607651574, guid: 780c44ece916e4a4aac5660ec5ee8847,
         type: 3}
