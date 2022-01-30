@@ -8,7 +8,7 @@ public class InFlightState : GameState
     public override void Setup(GameStateMachine gameStateMachine)
     {
         base.Setup(gameStateMachine);
-        totalDuration = 12;
+        totalDuration = 0;
 
         ApplyGravityFromPlanets.PlayerOrbit += OnPlayerOrbit;
         ApplyGravityFromPlanets.PlayerCrash += OnPlayerRespawn;

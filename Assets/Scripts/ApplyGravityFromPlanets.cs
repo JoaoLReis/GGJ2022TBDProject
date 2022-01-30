@@ -41,11 +41,10 @@ public class ApplyGravityFromPlanets : MonoBehaviour
             {
                 Detach();
                 PlayerCrash.Invoke();
-                Debug.Log("Kaboom"); 
+                //Debug.Log("Kaboom"); 
                 return;
 			}
 
-            Debug.Log("Applying Gravity");
             //apply gravitational force
             float r = dir.magnitude;
             float totalForce = -(starMass) / (r * r);
@@ -64,7 +63,6 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 
     public void TryToDetach()
 	{
-        Debug.Log("Trying to Detach");
         if (inOrbit && closestPlanet != null)
         {
             Detach();
@@ -74,7 +72,6 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 
     void Detach()
     {
-        Debug.Log("Detaching");
         if(closestPlanet.GetComponent<HingeJoint2D>() != null)
             closestPlanet.GetComponent<HingeJoint2D>().enabled = false;
         anchorPoint = Vector2.zero;
@@ -110,7 +107,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
                 if (rb2d.velocity.magnitude < 10f)
                 {
                     //enter orbit
-                    Debug.Log("Entering Orbit with planet" + collision.gameObject.name + "!");
+                    //Debug.Log("Entering Orbit with planet" + collision.gameObject.name + "!");
 
                     PlayerOrbit.Invoke();
                     HingeJoint2D joint = closestPlanet.GetComponent<HingeJoint2D>();
@@ -135,7 +132,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlanetGravity") && closestPlanet == collision.transform.parent)
         {
-            Debug.Log("Exiting gravity field for planet " + collision.transform.parent.name + "!");
+            //Debug.Log("Exiting gravity field for planet " + collision.transform.parent.name + "!");
             Detach();
         }
     }
