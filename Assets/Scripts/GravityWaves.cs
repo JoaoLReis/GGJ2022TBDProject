@@ -23,16 +23,23 @@ public class GravityWaves : MonoBehaviour
     void Start()
     {
         objectSizeMultiplier = transform.localScale.x;
-        isPositiveMass = planetStats.mass > 0;
+        isPositiveMass = planetStats.IsPositiveMass();
 
         ChangeSize(ref wavesAttraction);
         ChangeSize(ref wavesRepulsion);
         ApplyDirection(isPositiveMass);
 
-        ApplyGravityFromPlanets.ChangePolarity += InvertDirection;
+        if(planetStats.CanChangePolarity())
+            ApplyGravityFromPlanets.ChangePolarity += InvertDirection;
     }
 
-    private void InvertDirection(bool polarity)
+	private void OnDestroy()
+    {
+        if (planetStats.CanChangePolarity())
+            ApplyGravityFromPlanets.ChangePolarity -= InvertDirection;
+    }
+
+	private void InvertDirection(bool polarity)
     {
         ApplyDirection(isPositiveMass == polarity);
     }

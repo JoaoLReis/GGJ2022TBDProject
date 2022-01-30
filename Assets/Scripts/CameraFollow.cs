@@ -6,16 +6,14 @@ public class CameraFollow : MonoBehaviour
     public float speed;
     public Vector3 offset;
 
+    private Camera cam;
     private GameObject targetPlayer;
     private InterpolatedTransform interpolatedTransform;
     private InterpolatedTransformUpdater interpolatedTransformUpdater;
 
-    private void Start()
+    private void Awake()
     {
-        // interpolatedTransform = GetComponent<InterpolatedTransform>();
-        // interpolatedTransformUpdater = GetComponent<InterpolatedTransformUpdater>();
-        // interpolatedTransform.enabled = true;
-        // interpolatedTransformUpdater.enabled = true;
+        cam = GetComponent<Camera>();
     }
 
     public void SetTarget(GameObject targetToFollow)
@@ -27,8 +25,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (targetPlayer == null)
             return;
-
-        Vector3 targetPosition = targetPlayer.transform.position + offset;
+        Vector3 targetPosition = targetPlayer.transform.position + calculateCamOffset();
         Vector3 position = transform.position;
         position = Vector3.Lerp(
             position,
@@ -37,4 +34,9 @@ public class CameraFollow : MonoBehaviour
         );
         transform.position = position;
     }
+
+    Vector3 calculateCamOffset()
+	{
+        return Vector3.up * (cam.orthographicSize - 2);
+	}
 }

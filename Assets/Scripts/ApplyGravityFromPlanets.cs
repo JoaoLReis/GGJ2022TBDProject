@@ -57,7 +57,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
 	{
         TryToDetach();
         positivePolarity = !positivePolarity;
-        starMass *= -1;
+        if(closestPlanet != null) starMass = closestPlanet.GetComponent<PlanetStats>().GetPolarity(PositivePolarity); 
         ChangePolarity.Invoke(positivePolarity);
     }
 
@@ -86,6 +86,10 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         {
             if (closestPlanet != null)
             {
+                starMass = closestPlanet.GetComponent<PlanetStats>().GetPolarity(PositivePolarity);
+                if(starMass > 0)
+                    return;
+
                 Vector2 vectorToCenter = transform.position - closestPlanet.position;
                 Vector2 forward = transform.up;
                 Vector3 tangent = new Vector3(vectorToCenter.y, -vectorToCenter.x, 0);
@@ -124,7 +128,7 @@ public class ApplyGravityFromPlanets : MonoBehaviour
         {
             closestPlanet = collision.transform.parent;
             anchorPoint = closestPlanet.position;
-            starMass = closestPlanet.GetComponent<PlanetStats>().mass * (positivePolarity ? 1 : -1);
+            starMass = closestPlanet.GetComponent<PlanetStats>().GetPolarity(PositivePolarity);
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
