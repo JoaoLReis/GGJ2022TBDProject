@@ -320,7 +320,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0.30599785, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4991,8 +4991,8 @@ GameObject:
   - component: {fileID: 5635966661511094410}
   - component: {fileID: 5635966661511094515}
   - component: {fileID: 5635966661511094512}
-  - component: {fileID: 3325341176857593018}
   - component: {fileID: 5476948666308472871}
+  - component: {fileID: 1307966170796138904}
   m_Layer: 7
   m_Name: Planet
   m_TagString: Untagged
@@ -5080,19 +5080,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &3325341176857593018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5635966661511094411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c403155721101247997730721938c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: -10
 --- !u!114 &5476948666308472871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,6 +5094,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wavesAttraction: {fileID: 7203234139935961329}
   wavesRepulsion: {fileID: 464826715541667362}
+--- !u!114 &1307966170796138904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5635966661511094411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac1b18646349344699c2beb63acb9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 10
 --- !u!1 &5776913000204995528
 GameObject:
   m_ObjectHideFlags: 0
@@ -5330,7 +5330,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.047135524, g: 0.9716981, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
